@@ -1,4 +1,4 @@
-"""mysite URL Configuration
+"""crm URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -13,9 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+
+from django.conf.urls import include, url
+from django.contrib.auth import views
+
 from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # url(r'^login/login/$', views.login, name='login'),
+    # url(r'^login/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'', include('company.urls')),
 ]

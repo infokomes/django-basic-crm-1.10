@@ -8,3 +8,27 @@ System będzie realizować następujące zadania:
 2. Po zalogowaniu widoczne w menu są dwie sekcje: companies oraz users.
 3. W sekcji companies na głównym ekranie jest tabela z listą aktualnie dodanych firm, oraz przycisk umożliwiający dodanie nowej firmy.
 4. Sekcja users pozwala na zarządzanie użytkownikami, którzy mogą logować się do systemu.
+
+Installation
+------------
+    $ sudo apt-get install python3.5-venv
+
+    $ python3 -mvenv myvenvcrm
+    $ source myvenvcrm/bin/activate
+
+    $ python3 -m pip install -U pip
+    $ python3 -m pip install -U setuptools
+    $ python3 -m pip install -r requirements.txt
+
+    $ #deactivate
+
+    $ python3 -m pip freeze > requirements.txt
+
+    $ python3 manage.py migrate
+    $ python3 manage.py runserver
+
+    To be able to log in use the following
+
+    user: guest
+
+    password: guestpassword

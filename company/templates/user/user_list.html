@@ -1,0 +1,71 @@
+{% extends 'company/base.html' %}
+
+{% block content %}
+
+        <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">List of users allowed to view the system</h1>
+        </div>
+    </div><!--/.row-->
+
+
+        <a href="{% url 'home' %}"><span class="btn btn-default">Main Page</span></a>
+    {% if request.user.is_superuser %}
+        <a href="{% url 'user_new' %}"><span class="btn btn-primary">New User</span></a>
+    {% endif %}
+    <br><br>
+
+    <div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">List of Companies</div>
+					<div class="panel-body">
+						<table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						    <thead>
+						    <tr>
+                                <th data-field="id" data-checkbox="true" >ID</th>
+
+                                <th data-field="login"  data-sortable="true">Login</th>
+                                <th data-field="first-name" data-sortable="true">First name</th>
+						        <th data-field="last-name" data-sortable="true">Last name</th>
+                                <th data-field="email" data-sortable="true">Email address</th>
+                                <th data-field="superuser" data-sortable="true">Superuser</th>
+                                {% if request.user.is_superuser %}
+                                <th data-field="edit" data-sortable="false">Edit</th>
+                                <th data-field="remove" data-sortable="false">Remove</th>
+                                {% endif %}
+						    </tr>
+						    </thead>
+
+                            <tbody>
+                             {% for user in users %}
+                            <tr>
+                                <td></td>
+                                <td><a href="{% url 'user_details' pk=user.pk %}">{{ user.username }}</a></td>
+                                <td>{{ user.first_name }}</td>
+                                <td>{{ user.last_name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.is_superuser }}</td>
+
+                                {% if request.user.is_superuser %}
+                                    <td>
+                                     <a class="btn btn-default" href="{% url 'user_edit' pk=user.pk %}">
+                                        <span class="glyphicon glyphicon-pencil"></span></a>
+                                    </td>
+                                {% endif %}
+                                {% if request.user.is_superuser %}
+                                    <td>
+                                    <a class="btn btn-danger" href="{% url 'user_delete' pk=user.pk %}" onclick="return confirm('Are you sure?')">
+                                     <span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+
+{% endblock %}
