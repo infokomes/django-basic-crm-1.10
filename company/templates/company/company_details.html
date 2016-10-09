@@ -1,13 +1,30 @@
 {% extends 'company/base.html' %}
 
 {% block content %}
-<a class="btn btn-default" href="{% url 'company_list' %}">Company List</a>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Details of Company:</h1>
+        </div>
+    </div><!--/.row-->
+
+
+        <a href="{% url 'home' %}"><span class="btn btn-default">Main Page</span></a>
+    {% if user.is_superuser %}
+    <a class="btn btn-default" href="{% url 'company_list' %}">Company List</a>
+    {% endif %}
+    <br><br>
+
 <div>
     <h1><a>{{ company.name }}</a></h1>
+    <p>NIP: <strong>{{ company.nip }}</strong></p>
+    <p>Country: <strong>{{ company.country }}</strong></p>
     <p>City: <strong>{{ company.city }}</strong></p>
     <p>Street: <strong>{{ company.street }}</strong></p>
-    <p>Postal code: <strong>{{ company.postal_code }}</strong></p>
-    <p>Identification number: <strong>{{ company.number }}</strong></p>
+    <p>Zipcode: <strong>{{ company.zipcode }}</strong></p>
+    <p>Phone Number: <strong>{{ company.phone }}</strong></p>
+    <p>Email Address: <strong>{{ company.email }}</strong></p>
+    
     {% if user.is_superuser %}
         <a class="btn btn-default" href="{% url 'company_edit' pk=company.pk %}">
             <span class="glyphicon glyphicon-pencil"></span></a>

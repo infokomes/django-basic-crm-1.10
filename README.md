@@ -32,3 +32,17 @@ Installation
     user: guest
 
     password: guestpassword
+    
+Runner
+------
+
+    {
+    "cmd": [
+        "bash",
+        "--login",
+        "-c",
+        "source myvenvcrm/bin/activate && python manage.py runserver $ip:$port"
+    ],
+    "working_dir": "$project_path",
+    "info": "Your code is running at \\033[01;34m$url\\033[00m.\n\\033[01;31m"
+    }

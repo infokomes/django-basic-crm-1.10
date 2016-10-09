@@ -3,31 +3,24 @@
 
 {% block content %}
 
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">New Company</h1>
+        </div>
+    </div><!--/.row-->
+
+
+    <a href="{% url 'home' %}"><span class="btn btn-default">Main Page</span></a>
+    {% if user.is_superuser %}
 <a class="btn btn-default" href="{% url 'company_list' %}">Company List</a>
+    {% endif %}
+    <br><br>
+
 <div class="form-edit">
-    <h1>New Company</h1>
+    <h1></h1>
     <form method="POST" class="company-form">
         {% csrf_token %}
         {% for field in form %}
-
-            {% if field.label == 'Country' %}
-        <fieldset class="form-group">
-            <label class="control-label">{{ field.label }}</label><br><br>
-            {{ field.errors }}
-            {% if field.value %}
-                <select class="form-control" name="country">
-                    <option value="{{ field.code }}">{{ field.name }}></option>
-                <option value="AF">Afghanistan</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option>
-
-                </select>
-            {% else %}
-                <select class="form-control" name="country">
-                <option value=""></option><option value="AF">Afghanistan</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option>
-                </select>
-            {% endif %}
-        </fieldset>
-
-        {% else %}
         <fieldset class="form-group">
             <label class="control-label">{{ field.label }}</label>
             {{ field.errors }}
@@ -37,7 +30,7 @@
                 <input type="text" class="form-control" name="{{ field.name }}" placeholder="{{ field.label }}">
             {% endif %}
         </fieldset>
-            {% endif %}
+            
         {% endfor %}
         <button type="submit" class="save btn btn-primary">Save</button>
         <a class="btn btn-inverse" href="{% url 'company_list' %}">Cancel</a>

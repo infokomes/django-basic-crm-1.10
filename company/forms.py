@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Company
 from validate_email import validate_email
-from django_countries.widgets import CountrySelectWidget
+# from django_countries.widgets import CountrySelectWidget
 
 import re
 
@@ -11,7 +11,7 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ('name', 'nip', 'country', 'city', 'street', 'zipcode', 'phone', 'email')
-        widgets = {'country': CountrySelectWidget()}
+        # widgets = {'country': CountrySelectWidget()}
 
 
     def __init__(self, *args, **kwargs):
@@ -27,7 +27,7 @@ class CompanyForm(forms.ModelForm):
     def clean_phone(self):
         cd = self.cleaned_data
         phone = cd.get('phone')
-        if not re.match(r'(\+?)\d(-?\d){9}$', str(phone)):
+        if not re.match(r'(\+?)\d(-?\d){10}$', str(phone)):
             raise forms.ValidationError(
                 "Must consist of 10 digits, '+' allowed on beginning, '-' allowed.")
         return phone

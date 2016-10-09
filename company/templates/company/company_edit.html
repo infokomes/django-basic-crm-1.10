@@ -1,9 +1,22 @@
 {% extends 'company/base.html' %}
 
 {% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Edit Company</h1>
+        </div>
+    </div><!--/.row-->
+
+
+    <a href="{% url 'home' %}"><span class="btn btn-default">Main Page</span></a>
+    {% if user.is_superuser %}
 <a class="btn btn-default" href="{% url 'company_list' %}">Company List</a>
+    {% endif %}
+    <br><br>
+
 <div class="form-edit">
-    <h1>Edit Company</h1>
+    <h1></h1>
     <form method="POST" class="company-form">
         {% csrf_token %}
         {% for field in form %}
