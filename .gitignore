@@ -136,6 +136,6 @@ ENV/
 #Extra
 __pycache__
 myvenvcrm
-db.sqlite3
+#db.sqlite3
 .DS_Store
 myvenvcrm/
