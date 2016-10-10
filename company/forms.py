@@ -2,16 +2,20 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Company
 from validate_email import validate_email
-# from django_countries.widgets import CountrySelectWidget
+from django_countries.widgets import CountrySelectWidget
+from django_countries import countries
+from django_countries.fields import LazyTypedChoiceField
 
 import re
 
 class CompanyForm(forms.ModelForm):
 
+    country = LazyTypedChoiceField(choices=countries)
+
     class Meta:
         model = Company
-        fields = ('name', 'nip', 'country', 'city', 'street', 'zipcode', 'phone', 'email')
-        # widgets = {'country': CountrySelectWidget()}
+        fields = ('name', 'nip', 'country', 'city', 'street', 'zipcode', 'phone', 'email' )
+        widgets = {'country': CountrySelectWidget()}
 
 
     def __init__(self, *args, **kwargs):
@@ -33,7 +37,6 @@ class CompanyForm(forms.ModelForm):
         return phone
 
     # def checksum(number):
-    #     """Calculate the checksum."""
     #     weights = (6, 5, 7, 2, 3, 4, 5, 6, 7, -1)
     #     return sum(w * int(n) for w, n in zip(weights, number)) % 11
     #
@@ -47,7 +50,7 @@ class CompanyForm(forms.ModelForm):
     #     if checksum(nip) != 0:
     #         raise forms.ValidationError("InvalidChecksum")
     #     return nip
-#
+
     def clean_email(self):
         cd = self.cleaned_data
         email = cd.get('email')

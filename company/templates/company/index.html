@@ -5,13 +5,158 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Home</h1>
+            <h1 class="page-header">Documentation CRM</h1>
         </div>
     </div><!--/.row-->
 
     {% if user.is_superuser %}
         <a href="{% url 'home' %}"><span class="btn btn-default">Main Page</span></a>
     {% endif %}
+    
+    <div class="row">
+			<div class="col-lg-12">
+				<h2>Documentation</h2>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						DJANGOCRM 1.10
+					</div>
+					<div class="panel-body">
+					<p>Prosty system CRM w technologiach Python/Django oraz przy użyciu twitter bootstrap-a jako frontendu.</p>
+
+                    <p>System będzie realizować następujące zadania:</p>
+                    <ol>
+                    <li>Strona główna - okno logowania</li>
+                    <li>Po zalogowaniu widoczne w menu są dwie sekcje: companies oraz users.</li>
+                    <li>W sekcji companies na głównym ekranie jest tabela z listą aktualnie dodanych firm, oraz przycisk umożliwiający dodanie nowej firmy.</li>
+                    <li>Sekcja users pozwala na zarządzanie użytkownikami, którzy mogą logować się do systemu.</li>
+                    </ol>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						Struktura Danych
+					</div>
+					<div class="panel-body">
+							<table data-toggle="table">
+						    <thead>
+						    <tr>
+						        <th data-field="name">Nazwa</th>
+						        <th data-field="type">Typ</th>
+						    </tr>
+						    </thead>
+						    <tbody align="left">
+					    		<tr><td>Company Name</td><td >CharField(max_length=100)</td>
+					    		</tr>
+					    		<tr><td>NIP</td><td >CharField(max_length=10)</td>
+								</tr>
+								<tr><td >Country</td><td > CountryField(blank_label='(select country))</td>
+								</tr>
+								<tr><td >City</td><td >models.CharField(max_length=100)</td>
+								</tr>
+								<tr><td >Street</td><td >models.CharField(max_length=200)</td>
+								</tr>
+								<tr><td >Zipcode</td><td >models.CharField(max_length=6)</td>
+								</tr>
+								<tr><td >Phone Number</td><td >models.CharField(max_length=20)</td>
+								</tr>
+								<tr><td >Email Address</td><td >models.CharField(max_length=200)/td>
+								</tr>
+						    </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-4">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						Zaimplementowano
+					</div>
+					<div class="panel-body">
+						 <p>System został wyposażony w następujące moduły:</p>
+                    <ol>
+                    <li>Logowanie i wylogowanie</li>
+                    <li>Typ użytkowników (Superuser)</li>
+                    <li>Menu użytkownika </li>
+                    <li>Dwie sekcje: companies oraz users</li>
+                    <li>W sekcjach jest tabela z listą aktualnie ( dodanych firm / użytkowników ) , oraz przyciski umożliwiające dodanie, edycji, usunięcia firmy.</li>
+                    <li>Sekcja users dodatkowo pozwala na zarządzanie użytkownikami, którzy mogą logować się do systemu.</li>
+                    </ol>
+					</div>
+				</div>
+			</div>
+			
+		</div><!-- /.row -->
+			
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Wykorzystane Technologie
+					</div>
+					<div class="panel-body">
+					    <p><strong>Python v3.5</strong></p>
+						<ol>
+						    <li>Django v1.10.1</li>
+							<li>django-countries v4.0</li>
+							<li>validate-email v1.3</li>
+						</ol>
+						<p><strong>Web</strong></p>
+						<ol>
+						    <li>Bootstrap v3.3.7</li>
+						    <li>jQuery v1.11.1 </li>
+						    <li>Bootstrap Table v1.3.0</li>
+						    <li>Glyphs icon</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						Możliwe moduły w przyszłości
+					</div>
+					<div class="panel-body">
+						<p><strong>Moduły</strong></p>
+						<ol>
+						    <li>Organizations (sekcja comapnies do której ma dostęp określonej grupy użytkowników należących do organicacji)</li>
+						    <li>Mailing system </li>
+						     <li>Testy automatyczne </li>
+						    <li>Przypisywanie firm do użytkowników</li>
+						    <li>Role i indywidualne sekcje companies użytkowników</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						Form Control
+					</div>
+					<div class="panel-body">
+						<p>Zaimplemoentowane Formy Control:</p>
+						<ol>
+						    <li>clean_zipcode </li>
+						    <li> clean_phone </li>
+						     <li>clean_email  </li>
+						    <li> clean_nip  </li>
+						</ol>
+						
+					</div>
+				</div>
+			</div>
+			
+		</div><!-- /.row -->
+        
+    
+    
 
 {% endif %}
 {% endblock %}

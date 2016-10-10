@@ -9,7 +9,7 @@
     </div><!--/.row-->
 
 
-        <a href="{% url 'home' %}"><span class="btn btn-default">Main Page</span></a>
+    <a href="{% url 'home' %}"><span class="btn btn-default">Main Page</span></a>
     {% if user.is_superuser %}
     <a class="btn btn-default" href="{% url 'company_list' %}">Company List</a>
     {% endif %}
@@ -18,7 +18,7 @@
 <div>
     <h1><a>{{ company.name }}</a></h1>
     <p>NIP: <strong>{{ company.nip }}</strong></p>
-    <p>Country: <strong>{{ company.country }}</strong></p>
+    <p>Country: <strong>{{ company.country.name }}</strong></p>
     <p>City: <strong>{{ company.city }}</strong></p>
     <p>Street: <strong>{{ company.street }}</strong></p>
     <p>Zipcode: <strong>{{ company.zipcode }}</strong></p>

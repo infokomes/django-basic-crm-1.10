@@ -23,7 +23,14 @@
         <fieldset class="form-group">
             <label class="control-label" for="id_{{ field.name }}">{{ field.label }}</label>
             {{ field.errors }}
-            <input type="text" class="form-control" name="{{ field.name }}" id="id_{{ field.name }}" value="{{ field.value }}">
+            {% if field.label == 'Country' %}<br>
+                
+                {{ field }}
+
+            {% else %}
+                <input type="text" class="form-control" name="{{ field.name }}" id="id_{{ field.name }}" value="{{ field.value }}">
+            {% endif %}
+
         </fieldset>
         {% endfor %}
         <button type="submit" class="save btn btn-primary">Save</button>
